@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 
-# Herencia
+# Tema 6: clases en Python
+
+# Subtema 6.2 Herencia:
 # La herencia permite definir una clase que hereda todos los métodos y propiedades de otra clase. 
 # La clase padre es la clase de la que se hereda, también llamada clase base. 
 # La clase hija es la clase que hereda de otra clase, también llamada clase derivada.

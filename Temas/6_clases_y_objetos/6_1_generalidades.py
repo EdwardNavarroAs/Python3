@@ -1,5 +1,6 @@
 # Tema 6: clases en Python
 
+# Subtema 6.1 Generalidades:
 # Python es un lenguaje de programación orientado a objetos. Casi todo en Python es un objeto, con sus propiedades y métodos.
 # Una clase es como un constructor de objetos o un "modelo" para crear objetos.
 
