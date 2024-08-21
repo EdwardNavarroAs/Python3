@@ -80,3 +80,41 @@ print("Ejemplo de llamado a una variable específica guardada en un módulo desd
 print(f"Variable guardada en el módulo: {a}")
 print('')
 
+# ------------------------------------------------------------------------------------------------
+# PAQUETES EN PYTHON
+# Un paquete en Python es una manera de estructurar una colección de módulos relacionados.
+# Un paquete se crea colocando los módulos en un directorio con un archivo __init__.py.
+# Es posible importar módulos desde el paquete utilizando:
+from mypackage import modulo1
+
+# O también importar funciones específicas:
+from mypackage.modulo2 import my_function
+
+# Esto permite una organización más limpia y modular del código.
+
+
+# ------------------------------------------------------------------------------------------------
+# MÓDULOS ESPECIALES
+# Python tiene un módulo especial llamado '__main__' que permite ejecutar código solo cuando un archivo es ejecutado directamente,
+# y no cuando es importado como un módulo.
+
+print("\nMÓDULOS ESPECIALES\n")
+print("Python tiene un módulo especial llamado '__main__' que permite ejecutar código solo cuando el archivo es ejecutado directamente")
+
+if __name__ == "__main__":
+    print("Este código solo se ejecutará si este archivo es ejecutado directamente, no cuando se importa como módulo.")
+    print('')
+
+# ------------------------------------------------------------------------------------------------
+# MANEJO DE ERRORES EN IMPORTACIÓN
+# Si se intenta importar un módulo que no existe, Python lanzará un ImportError.
+# Puedes manejar esto usando un bloque try-except:
+
+print("\nMANEJO DE ERRORES EN IMPORTACIÓN\n")
+print("Si se intenta importar un módulo que no existe, Python lanzará un ImportError")
+
+try:
+    print("intentando importar un módulo inexistente...")
+    import nonexistentmodule
+except ImportError:
+    print("Error: El módulo no pudo ser encontrado.")
