@@ -119,6 +119,23 @@ print("Fuera de la función:", y)
 print('')
 
 # ------------------------------------------------------------------------------------------------
+# PALABRA CLAVE NONLOCAL
+# La palabra clave nonlocal se utiliza para trabajar con variables dentro de funciones anidadas.
+# La palabra clave nonlocal permite modificar una variable en la función externa desde una función anidada.
+def myfunc1():
+    x = "Variable local de la función myfunc1"
+    def myfunc2():
+        nonlocal x
+        x = "Variable modificada en la función anidada myfunc2"
+    myfunc2()
+    return x
+
+print("\nPALABRA CLAVE NONLOCAL EN PYTHON\n")
+print("La palabra clave nonlocal se utiliza para trabajar con variables dentro de funciones anidadas, permitiendo modificar una variable en la función externa desde una función anidada.")
+print(myfunc1())
+print('')
+
+# ------------------------------------------------------------------------------------------------
 # DESEMPAQUETADO EN PYTHON
 # Python permite el desempaquetado de secuencias, lo que significa asignar elementos de una secuencia 
 # (como listas o tuplas) a múltiples variables de manera simultánea.
