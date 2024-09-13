@@ -185,11 +185,68 @@ print(f'Reemplazando los dos primeros caracteres de espacio en blanco en la cade
 print(x)
 print('')
 
+# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# OBJETO MATCH
+# Un objeto Match es un objeto que contiene información sobre la búsqueda y el resultado.
+#   Nota: Si no hay ninguna coincidencia, se devolverá el valor None en lugar de un objeto Match.
+txt = "La lluvia en Colombia"
+x = re.search("ia", txt)
+print("Un objeto Match es un objeto que contiene información sobre la búsqueda y el resultado.")
+print("Realizando una búsqueda que devuelve un objeto Match:")
+print(f"Resultado: {x}, tipo de dato: {type(x)}")
+print('')
 
+# El objeto Match tiene propiedades y métodos que se utilizan para recuperar información sobre la búsqueda y el resultado:
+# El método span() devuelve una tupla que contiene las posiciones de inicio y fin de la coincidencia
+x = re.search(r"\bC\w+", txt)
+print("El método span() devuelve una tupla que contiene las posiciones de inicio y fin de la coincidencia.")
+print(f"Utilizando el método span() para obtener la posición (posición inicial y final) de la primera coincidencia dentro del texto '{txt}' que comience con la letra C mayúscula:")
+print(x.span())
+print('')
 
-x = re.search("^La.*Colombia$", txt)
+# La propiedad string devuelve la cadena pasada a la función
+print("La propiedad string devuelve la cadena pasada a la función:")
+print(x.string)
+print('')
+
+# El método group() devuelve la parte de la cadena donde hubo una coincidencia
+print("El método group() devuelve la parte de la cadena donde hubo una coincidencia:")
+print(x.group())
+print('')
+
+# ------------------------------------------------------------------------------------------------
+# FLAGS O MODIFICADORES DE BÚSQUEDA
+
+# Los flags permiten modificar el comportamiento de las expresiones regulares:
+# re.IGNORECASE (re.I) permite hacer coincidir sin distinguir entre mayúsculas y minúsculas.
+x = re.search(r"colombia", txt, re.IGNORECASE)
+print("Usando re.IGNORECASE para hacer coincidir sin distinguir entre mayúsculas y minúsculas:")
+print(f"Resultado al buscar 'colombia' en '{txt}': {x.group()}")
+print('')
+
+# re.DOTALL (re.S) hace que el punto (.) coincida también con nuevas líneas.
+txt_multiline = "Lluvia\nColombia"
+x = re.search(r"Lluvia.*Colombia", txt_multiline, re.DOTALL)
+print("Usando re.DOTALL para que el punto coincida también con saltos de línea:")
+print(f"Resultado al buscar 'Lluvia.*Colombia' en texto multilínea:\n{x.group()}")
+print('')
+
+# re.MULTILINE (re.M) permite que ^ y $ coincidan al inicio y fin de cada línea.
+txt_multiline = "Lluvia en Bogotá\nColombia es hermoso"
+x = re.findall(r"^Colombia", txt_multiline, re.MULTILINE)
+print("Usando re.MULTILINE para que ^ coincida al inicio de cada línea:")
+print(f"Coincidencias encontradas al buscar 'Colombia' al inicio de cada línea:\n{x}")
+print('')
+
+# ------------------------------------------------------------------------------------------------
+# EJEMPLO COMPLETO UTILIZANDO CONJUNTOS, SECUENCIAS Y METACARACTERES
+
+txt = "La lluvia en Bogotá, Colombia es maravillosa."
+print('Ejemplo completo para encontrar un patrón en una cadena de texto:')
+x = re.search(r"^La.*Colombia", txt)
 
 if x:
-  print("¡SÍ! ¡Tenemos una coincidencia!")
+    print("¡SÍ! ¡Existe una coincidencia!")
+    print(f"El resultado es: {x.group()}")
 else:
-  print("No hay coincidencia")
+    print("No hay coincidencia")
