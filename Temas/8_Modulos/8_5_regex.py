@@ -4,17 +4,6 @@
 
 # Una expresión regular (RegEx) es una secuencia de caracteres que forma un patrón de búsqueda.
 # RegEx se puede utilizar para comprobar si una cadena contiene el patrón de búsqueda especificado.
-# Python tiene un paquete incorporado llamado re, que se utiliza para trabajar con expresiones regulares.
-import re
-
-# Ejemplo 1: Comprueba si la cadena de texto empieza con "La" y termina con "Colombia":
-txt = "La lluvia en Colombia"
-x = re.search("^La.*Colombia$", txt)
-
-if x:
-  print("¡SÍ! ¡Tenemos una coincidencia!")
-else:
-  print("No hay coincidencia")
 
 # El módulo re ofrece un conjunto de funciones que permiten buscar una coincidencia en una cadena de texto:
 """
@@ -146,3 +135,61 @@ Carácter    |        Descripción
             | Ejemplo: re.search("[+]", "1 + 2 = 3")
 ----------------------------------------------------------------------------
 """
+
+
+# Python tiene un paquete incorporado llamado re, que se utiliza para trabajar con expresiones regulares.
+import re
+
+# La función findall() devuelve una lista que contiene todas las coincidencias:
+txt = "La lluvia en Colombia"
+
+x = re.findall("ia", txt)
+print("La función findall() devuelve una lista con todas las coincidencias en una cadena de texto.")
+print(f'Generando una lista con todas las coincidencias de "ia" en la cadena de texto "{txt}":')
+print(x)
+print('')
+
+# La función search() busca una coincidencia en la cadena y devuelve un objeto Match si hay una coincidencia.
+# Si hay más de una coincidencia, solo se devolverá la primera ocurrencia:
+x = re.search("\s", txt)
+
+print("La función search() busca una coincidencia en la cadena y devuelve un objeto Match si hay una coincidencia.")
+print(f'El primer espacio en blanco en la cadena de texto "{txt}" está en la posición: {x.start()}')
+print('')
+
+# La función split() devuelve una lista donde la cadena se ha dividido en cada coincidencia:
+x = re.split("\s", txt)
+print("La función split() devuelve una lista donde la cadena se ha dividido en cada coincidencia.")
+print(f'Generando una lista donde la cadena de texto "{txt}" se ha dividido en cada carácter de espacio en blanco:')
+print(x)
+print('')
+
+# También es posible controlar el número de ocurrencias especificando el parámetro maxsplit:
+x = re.split("\s", txt, 1)
+print("La función split() también permite especificar el número de ocurrencias mediante el parámetro maxsplit.")
+print(f'Generando una lista dividiendo la cadena de texto "{txt}" solo en la primera aparición del carácter de espacio en blanco:')
+print(x)
+print('')
+
+# La función sub() reemplaza las coincidencias con el texto elegido:
+x = re.sub("\s", "9", txt)
+print("La función sub() reemplaza las coincidencias con el texto elegido.")
+print(f'Reemplazando cada carácter de espacio en blanco en la cadena de texto "{txt}" con el número 9:')
+print(x)
+print('')
+
+# También es posible controlar el número de reemplazos especificando el parámetro de conteo:
+x = re.sub("\s", "9", txt, 2)
+print("La función sub() también permite especificar el número de reemplazos.")
+print(f'Reemplazando los dos primeros caracteres de espacio en blanco en la cadena de texto "{txt}" con el número 9:')
+print(x)
+print('')
+
+
+
+x = re.search("^La.*Colombia$", txt)
+
+if x:
+  print("¡SÍ! ¡Tenemos una coincidencia!")
+else:
+  print("No hay coincidencia")
