@@ -105,3 +105,65 @@ except TypeError as e:
 except Exception as e:
     print("Error: Ha ocurrido una excepción general: ", str(e))
     print('')
+
+# En Python es posible capturar múltiples excepciones en una sola línea utilizando una tupla.
+try:
+    print("El bloque try permite capturar múltiples excepciones en una sola línea.")
+    print("Ejemplo 8: Captura de múltiples excepciones en una sola línea")
+    print(z)
+except (NameError, TypeError):
+    print("Error: Ha ocurrido un NameError o un TypeError.")
+    print('')
+
+# También es posible crear excepciones personalizadas para definir errores específicos.
+class MiExcepcionPersonalizada(Exception):
+    pass
+
+try:
+    print("En Python es posible crear excepciones personalizadas para definir errores específicos.")
+    print("Ejemplo 9: Excepciones personalizadas")
+    raise MiExcepcionPersonalizada("Este es un error personalizado")
+except MiExcepcionPersonalizada as e:
+    print(f"Se ha generado una excepción personalizada: {e}")
+    print('')
+
+# La palabra clave as permite capturar detalles de una excepción.
+try:
+    print("La palabra clave 'as' permite capturar detalles de una excepción.")
+    print("Ejemplo 10: Uso de 'as' para capturar el objeto de la excepción")
+    division = 1 / 0
+    print(division)
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+    print('')
+
+# En Python es posible encadenar excepciones para mostrar que un error fue causado por otro, utilizando el encadenamiento de excepciones con 'raise from'.
+def validar_edad(edad):
+    try:
+        if edad < 0:
+            raise ValueError("La edad no puede ser negativa.")
+    except ValueError as e:
+        # Relanzar la excepción con un mensaje más específico
+        raise ValueError("Ocurrió un error en la validación de la edad.") from e
+
+try:
+    print("En Python es posible encadenar excepciones para mostrar que un error fue causado por otro con 'raise from'.")
+    print("Ejemplo 11: Encadenamiento de excepciones con 'raise from'")
+    validar_edad(-5)
+except ValueError as e:
+    print(f"Error capturado: {e}")
+    print(f"Excepción original: {e.__cause__}")
+    print('')
+
+# El módulo logging permite registrar excepciones de una manera más profesional.
+import logging
+logging.basicConfig(level=logging.ERROR)
+
+try:
+    print("El módulo logging permite registrar excepciones de una manera más profesional.")
+    print("Ejemplo 12: Uso de logging para registrar excepciones")
+    division = 1 / 0
+    print(division)
+except ZeroDivisionError as e:
+    logging.error("Se produjo un error de división por cero", exc_info=True)
+    print('')
