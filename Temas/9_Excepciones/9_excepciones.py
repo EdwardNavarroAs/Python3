@@ -167,3 +167,58 @@ try:
 except ZeroDivisionError as e:
     logging.error("Se produjo un error de división por cero", exc_info=True)
     print('')
+
+# Manejo avanzado de excepciones con el módulo traceback
+# El módulo traceback en Python se utiliza para obtener información detallada sobre las excepciones.
+# Esto es especialmente útil cuando se quiere imprimir la traza completa del error sin detener el flujo del programa.
+import traceback
+
+try:
+    print("El módulo traceback en Python se utiliza para obtener información detallada sobre las excepciones")
+    print("Ejemplo 13: Generando un error intencional para mostrar el uso del módulo traceback")
+    x = 1 / 0  # Genera una excepción ZeroDivisionError
+except ZeroDivisionError as e:
+    print("Error: Ha ocurrido una excepción de división por cero.")
+    # Utilizando traceback para imprimir la traza completa del error
+    print("Detalles del error con traceback:")
+    traceback.print_exc()
+    print('')
+
+# Utilizando traceback.format_exc() para capturar la traza del error como una cadena
+try:
+    print("El modulo traceback tambien permite capturar la traza del error como una cadena")
+    print("Ejemplo 14: Capturando la traza del error como una cadena de texto")
+    x = [1, 2, 3]
+    y = x[5]  # Genera un IndexError
+except IndexError as e:
+    error_trace = traceback.format_exc()  # Captura la traza del error en una cadena
+    print("Detalles del error capturados como cadena:")
+    print(error_trace)
+    print('')
+
+try:
+    print("El módulo traceback permite obtener información detallada sobre la excepción y la pila de llamadas.")
+    print("Ejemplo 15: Uso de traceback para obtener información detallada de la excepción")
+    
+    def funcion_a():
+        funcion_b()
+
+    def funcion_b():
+        funcion_c()
+
+    def funcion_c():
+        # Esto provocará un ZeroDivisionError
+        division = 1 / 0
+
+    funcion_a()
+
+except ZeroDivisionError as e:
+    print(f"Error capturado: {e}")
+    
+    # Extraer la traza del error
+    tb = traceback.extract_tb(e.__traceback__)
+    
+    print("Detalles del traceback (pila de llamadas):")
+    for frame in tb:
+        print(f"Archivo: {frame.filename}, Línea: {frame.lineno}, Función: {frame.name}, Código: {frame.line}")
+    print('')
