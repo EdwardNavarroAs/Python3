@@ -64,5 +64,5 @@ print('')
 print("Una vez que se ha terminado de utilizar el archivo, es importante cerrarlo utilizando el método close().")
 f = open("demofile.txt", "r")
 print(f.readline())
-f.close()  # Cerramos el archivo..
+f.close()  # Cerramos el archivo...
 print('')
