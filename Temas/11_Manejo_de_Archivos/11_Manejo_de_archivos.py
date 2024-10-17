@@ -6,7 +6,7 @@
 
 # "r" - Leer (Read) - Valor predeterminado. Abre un archivo para lectura. Da un error si el archivo no existe.
 # "a" - Anexar (Append) - Abre un archivo para anexar contenido. Crea el archivo si no existe.
-# "w" - Escribir (Write) - Abre un archivo para escribir (sobreescribe si ya existe). Crea el archivo si no existe.
+# "w" - Escribir (Write) - Abre un archivo para escribir (sobrescribe si ya existe). Crea el archivo si no existe.
 # "x" - Crear (Create) - Crea el archivo especificado. Da un error si el archivo ya existe.
 
 # Además, es posible especificar si el archivo debe manejarse en modo binario o de texto:
@@ -32,6 +32,7 @@ print("Ejemplo 2: Especificando la ruta de un archivo para ser leído:")
 f = open(r"myfile\demofile2.txt", "r") 
 print(f.read())
 print('')
+f.close()  # Asegúrate de cerrar el archivo después de usarlo
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
 # LEYENDO UN ARCHIVO EN PYTHON
@@ -44,6 +45,7 @@ print("Ejemplo 3: Leyendo solo los primeros 5 caracteres de un archivo de texto:
 f = open("demofile.txt", "r")
 print(f.read(5))  # Lee los primeros 5 caracteres del archivo
 print('')
+f.close()  # Cierra el archivo
 
 # También es posible devolver una línea completa de un archivo de texto utilizando el método readline():
 print("El método readline() permite leer una línea completa de un archivo de texto.")
@@ -52,17 +54,64 @@ f = open("demofile.txt", "r")
 print(f.readline())  # Lee la primera línea del archivo
 print(f.readline())  # Lee la segunda línea del archivo
 print('')
+f.close()  # Cierra el archivo
 
 # Al recorrer las líneas de un archivo con un bucle, podemos leerlo completo línea por línea:
 print("Ejemplo 5: Recorriendo un archivo de texto línea por línea:")
 f = open("demofile.txt", "r")
 for x in f:
-    print(x, end='')  # Se añade 'end' para evitar una nueva línea adicional, ya que cada línea incluye su propio salto de línea
+    print(x, end='')  # Se añade 'end' para evitar una nueva línea adicional
 print('')
+f.close()  # Cierra el archivo
 
 # Es una buena práctica cerrar siempre el archivo una vez que se haya utilizado para liberar recursos del sistema.
 print("Una vez que se ha terminado de utilizar el archivo, es importante cerrarlo utilizando el método close().")
 f = open("demofile.txt", "r")
 print(f.readline())
-f.close()  # Cerramos el archivo...
+f.close()  
 print('')
+
+
+# ESCRIBIENDO EN UN ARCHIVO EN PYTHON
+# Para escribir en un archivo existente, se debe agregar un parámetro a la función open():
+# "a" - Anexar - Se agregará al final del archivo.
+# "w" - Escritura - Sobrescribirá cualquier contenido existente (si no existe, lo crea).
+
+# Luego, es posible agregarle contenido al archivo mediante el método write().
+print("Para escribir en un archivo existente, se debe agregar el parámetro 'a' ó 'w' a la función open() y luego utilizar el método write().")
+print("Ejemplo 6: Abriendo un archivo y agregándole contenido al final.")
+f1 = open("demofile.txt", "r") 
+print(f"\nContenido original:")
+print(f1.read())
+f1.close()  # Cierra el archivo original
+
+f = open("demofile.txt", "a")
+f.write("Se ha agregado contenido nuevo!")
+f.close()  # Cierra el archivo después de escribir
+
+f = open("demofile.txt", "r")
+print("\nContenido modificado:")
+print(f.read())
+print('')
+f.close()  # Cierra el archivo
+
+print("Ejemplo 7: Abriendo un archivo y sobrescribiendo su contenido en su totalidad.")
+f = open("demofile3.txt", "w") 
+f.write("Se ha sobreescrito completamente el contenido de este archivo. Saludos!")
+f.close()  # Cierra el archivo después de escribir
+
+f = open("demofile3.txt", "r")
+print("Contenido del archivo sobrescrito:")
+print(f.read())
+print('')
+f.close()  # Cierra el archivo
+
+# Para crear un archivo nuevo con la función open() se debe utilizar el parámetro 'x'.
+print("Para crear un archivo nuevo, se debe agregar el parámetro 'x' a la función open().")
+print("Ejemplo 8: Creando un archivo nuevo vacío.")
+try:
+    f = open("myfile.txt", "x")  # Intenta crear un nuevo archivo
+    f.close()  # Cierra el archivo después de crearlo
+    print("Archivo 'myfile.txt' creado exitosamente.")
+except FileExistsError:
+    print("Error: El archivo 'myfile.txt' ya existe.")
