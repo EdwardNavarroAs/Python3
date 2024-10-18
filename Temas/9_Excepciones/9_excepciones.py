@@ -155,7 +155,7 @@ except ValueError as e:
     print(f"Excepción original: {e.__cause__}")
     print('')
 
-# El módulo logging permite registrar excepciones de una manera más profesional.
+# El módulo logging permite registrar excepciones de una manera más profesional..
 import logging
 logging.basicConfig(level=logging.ERROR)
 
