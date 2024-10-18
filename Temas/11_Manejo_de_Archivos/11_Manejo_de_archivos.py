@@ -113,5 +113,39 @@ try:
     f = open("myfile.txt", "x")  # Intenta crear un nuevo archivo
     f.close()  # Cierra el archivo después de crearlo
     print("Archivo 'myfile.txt' creado exitosamente.")
+    
 except FileExistsError:
     print("Error: El archivo 'myfile.txt' ya existe.")
+finally:
+    print('')
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+# ELIMINANDO UN ARCHIVO EN PYTHON
+# Para eliminar un archivo, se debe importar el módulo OS y ejecutar la función os.remove().
+# Sin embargo, para evitar obtener un error, se debe verificar si el archivo existe antes de intentar eliminarlo:
+import os
+
+if os.path.exists("myfile.txt"):
+    print("Ejemplo 9: Eliminando el archivo myfile.txt")
+    os.remove("myfile.txt")
+else:
+    print("El archivo no existe.")
+
+# Para eliminar una carpeta entera, se debe utilizar el método os.rmdir():
+"""
+import os
+os.rmdir("myfolder")
+"""
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+# MANEJANDO ARCHIVOS CON 'with'
+# Usar 'with' para manejar archivos es una buena práctica, ya que asegura que el archivo se cierre automáticamente al final del bloque,
+# incluso si ocurre un error. Esto es especialmente útil para evitar fugas de recursos.
+
+print("Ejemplo 10: Usando 'with' para manejar archivos de forma segura")
+with open("demofile.txt", "r") as f:
+    contenido = f.read()  # Lee todo el contenido del archivo
+    print("Contenido del archivo leído con 'with':")
+    print(contenido)
+print("El archivo se cierra automáticamente al salir del bloque 'with'.")
+print('')
