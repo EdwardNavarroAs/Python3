@@ -120,32 +120,109 @@ finally:
     print('')
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
-# ELIMINANDO UN ARCHIVO EN PYTHON
-# Para eliminar un archivo, se debe importar el módulo OS y ejecutar la función os.remove().
-# Sin embargo, para evitar obtener un error, se debe verificar si el archivo existe antes de intentar eliminarlo:
-import os
-
-if os.path.exists("myfile.txt"):
-    print("Ejemplo 9: Eliminando el archivo myfile.txt")
-    os.remove("myfile.txt")
-else:
-    print("El archivo no existe.")
-
-# Para eliminar una carpeta entera, se debe utilizar el método os.rmdir():
-"""
-import os
-os.rmdir("myfolder")
-"""
-
-# --------------------------------------------------------------------------------------------------------------------------------------------------------
 # MANEJANDO ARCHIVOS CON 'with'
 # Usar 'with' para manejar archivos es una buena práctica, ya que asegura que el archivo se cierre automáticamente al final del bloque,
 # incluso si ocurre un error. Esto es especialmente útil para evitar fugas de recursos.
 
-print("Ejemplo 10: Usando 'with' para manejar archivos de forma segura")
+print("Ejemplo 9: Usando 'with' para manejar archivos de forma segura")
 with open("demofile.txt", "r") as f:
     contenido = f.read()  # Lee todo el contenido del archivo
     print("Contenido del archivo leído con 'with':")
     print(contenido)
 print("El archivo se cierra automáticamente al salir del bloque 'with'.")
 print('')
+
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+# MANEJANDO ARCHIVOS Y DIRECTORIOS CON 'os'
+# El módulo 'os' proporciona una forma de interactuar con el sistema operativo y realizar operaciones relacionadas con archivos y directorios.
+
+import os
+
+# LISTANDO ARCHIVOS EN UN DIRECTORIO
+# Para listar todos los archivos y carpetas en un directorio, se utiliza os.listdir().
+print("Ejemplo 10: Listando archivos y carpetas en el directorio actual:")
+archivos_y_carpetas = os.listdir()  # Lista los archivos y carpetas en el directorio actual
+print(archivos_y_carpetas)
+print('')
+
+
+# CAMBIANDO EL DIRECTORIO DE TRABAJO
+# Para cambiar el directorio de trabajo actual, se utiliza os.chdir().
+directorio_original = os.getcwd() # se almacena el directorio actual para volver a este en un futuro
+print("Ejemplo 11: Cambiando el directorio de trabajo:")
+os.chdir('myfolder')  # Cambia el directorio de trabajo a 'myfolder'
+print(f"Nuevo directorio de trabajo: {os.getcwd()}")  # Muestra el directorio de trabajo actual
+print('')
+
+# CREANDO UN NUEVO DIRECTORIO
+# Para crear un nuevo directorio, se utiliza os.mkdir().
+print("Ejemplo 12: Creando un nuevo directorio:")
+if not os.path.exists("nuevo_directorio"):
+    os.mkdir("nuevo_directorio")
+    print("Directorio 'nuevo_directorio' creado.")
+else:
+    print("El directorio 'nuevo_directorio' ya existe.")
+print('')
+
+
+# VERIFICANDO LA EXISTENCIA DE UN ARCHIVO
+# Para verificar si un archivo existe, se puede usar os.path.exists().
+print("Ejemplo 13: Verificando la existencia de un archivo:")
+archivo = "demofile5.txt"
+if os.path.exists(archivo):
+    print(f"El archivo '{archivo}' existe.")
+else:
+    print(f"El archivo '{archivo}' no existe.")
+print('')
+
+# OBTENIENDO INFORMACIÓN SOBRE UN ARCHIVO
+# Para obtener información sobre un archivo, se utiliza os.stat().
+print("Ejemplo 14: Obteniendo información sobre un archivo:")
+if os.path.exists(archivo):
+    info_archivo = os.stat(archivo)
+    print(f"Tamaño del archivo '{archivo}': {info_archivo.st_size} bytes")
+    print(f"Última modificación: {info_archivo.st_mtime}")
+print('')
+
+# CAMBIANDO EL NOMBRE DE UN ARCHIVO
+# Para renombrar un archivo, se utiliza os.rename().
+print("Ejemplo 15: Cambiando el nombre de un archivo:")
+nuevo_nombre = "nuevo_demofile.txt"
+if os.path.exists(archivo):
+    os.rename(archivo, nuevo_nombre)
+    print(f"Archivo renombrado a '{nuevo_nombre}'.")
+else:
+    print(f"El archivo '{archivo}' no existe para renombrar.")
+print('')
+
+# ELIMINANDO UN DIRECTORIO VACÍO
+# Para eliminar un directorio vacío, se utiliza os.rmdir().
+print("Ejemplo 16: Eliminando un directorio vacío:")
+if os.path.exists("nuevo_directorio"):
+    os.rmdir("nuevo_directorio")
+    print("Directorio 'nuevo_directorio' eliminado.")
+else:
+    print("El directorio 'nuevo_directorio' no existe.")
+
+os.chdir(directorio_original)  
+print(f"Regresando al directorio original: {os.getcwd()}")
+print('')
+
+
+"""# --------------------------------------------------------------------------------------------------------------------------------------------------------
+# ELIMINANDO UN ARCHIVO EN PYTHON
+# Para eliminar un archivo, se debe ejecutar la función os.remove() del módulo os.
+# Sin embargo, para evitar obtener un error, se debe verificar si el archivo existe antes de intentar eliminarlo:
+if os.path.exists("myfile.txt"):
+    print("Ejemplo 11: Eliminando el archivo myfile.txt")
+    os.remove("myfile.txt")
+else:
+    print("El archivo no existe.")
+
+# Para eliminar una carpeta entera, se debe utilizar el método os.rmdir():
+
+import os
+os.rmdir("myfolder")
+
+"""
