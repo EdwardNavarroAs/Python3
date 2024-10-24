@@ -132,7 +132,6 @@ with open("demofile.txt", "r") as f:
 print("El archivo se cierra automáticamente al salir del bloque 'with'.")
 print('')
 
-
 # --------------------------------------------------------------------------------------------------------------------------------------------------------
 # MANEJANDO ARCHIVOS Y DIRECTORIOS CON 'os'
 # El módulo 'os' proporciona una forma de interactuar con el sistema operativo y realizar operaciones relacionadas con archivos y directorios.
@@ -146,13 +145,12 @@ archivos_y_carpetas = os.listdir()  # Lista los archivos y carpetas en el direct
 print(archivos_y_carpetas)
 print('')
 
-
 # CAMBIANDO EL DIRECTORIO DE TRABAJO
 # Para cambiar el directorio de trabajo actual, se utiliza os.chdir().
-directorio_original = os.getcwd() # se almacena el directorio actual para volver a este en un futuro
+directorio_original = os.getcwd()  # Guarda el directorio actual para volver más tarde
 print("Ejemplo 11: Cambiando el directorio de trabajo:")
 os.chdir('myfolder')  # Cambia el directorio de trabajo a 'myfolder'
-print(f"Nuevo directorio de trabajo: {os.getcwd()}")  # Muestra el directorio de trabajo actual
+print(f"Nuevo directorio de trabajo: {os.getcwd()}")
 print('')
 
 # CREANDO UN NUEVO DIRECTORIO
@@ -164,7 +162,6 @@ if not os.path.exists("nuevo_directorio"):
 else:
     print("El directorio 'nuevo_directorio' ya existe.")
 print('')
-
 
 # VERIFICANDO LA EXISTENCIA DE UN ARCHIVO
 # Para verificar si un archivo existe, se puede usar os.path.exists().
@@ -204,10 +201,79 @@ if os.path.exists("nuevo_directorio"):
     print("Directorio 'nuevo_directorio' eliminado.")
 else:
     print("El directorio 'nuevo_directorio' no existe.")
-
-os.chdir(directorio_original)  
-print(f"Regresando al directorio original: {os.getcwd()}")
 print('')
+
+# --------------------------------------------------------------------------------------------------------------------------------------------------------
+# CAMBIANDO DE DIRECTORIO MEDIANTE JOIN
+# También es posible cambiarse de directorio definiendo la ruta con el método join() del módulo os.
+print("Ejemplo 17: Navegando entre carpetas utilizando os.path.join()")
+# Obtiene el directorio actual
+directorio_actual = os.getcwd()
+print(f"Directorio actual: {directorio_actual}")
+
+# se define una carpeta nueva
+carpeta_nueva = "myfolder"
+# se une el directorio actual con la nueva carpeta utilizando os.path.join()
+# Esto crea una ruta completa válida para el sistema operativo
+ruta_completa = os.path.join(directorio_actual, carpeta_nueva)
+
+# se cambia al nuevo directorio utilizando la ruta completa
+os.chdir(ruta_completa)
+print(f"Cambiado al directorio: {os.getcwd()}")  # Muestra el nuevo directorio de trabajo
+
+# se regresa al directorio original
+os.chdir(directorio_actual)
+print(f"Regresando al directorio original: {os.getcwd()}")  # Verifica que se regreso al directorio original
+print('')
+
+# CREANDO UNA RUTA DE ACCESO ABSOLUTA
+# A veces es útil obtener la ruta completa de un archivo o directorio
+print("Ejemplo 18: Creando una ruta de acceso absoluta:")
+nombre_archivo = "demofile.txt"
+# os.path.join() permite combinar el directorio actual con el nombre del archivo y obtener la ruta completa
+ruta_archivo = os.path.join(directorio_actual, nombre_archivo)
+print(f"Ruta completa del archivo: {ruta_archivo}")
+print('')
+
+# NAVEGANDO HACIA EL DIRECTORIO PADRE CON OS
+# Si se necesita volver al directorio superior o "padre", es posible hacerlo usando '..'
+print("Ejemplo 19: Navegando hacia el directorio padre:")
+# se cambia al directorio 'myfolder' si existe
+carpeta_nueva = "myfolder"
+ruta_completa = os.path.join(directorio_actual, carpeta_nueva)
+
+if os.path.exists(ruta_completa):
+    os.chdir(ruta_completa)  # Cambia al directorio especificado
+    print(f"Cambiado al directorio: {os.getcwd()}")  # Verifica que se esta en el nuevo directorio
+else:
+    print(f"La carpeta {carpeta_nueva} no existe en {directorio_actual}.")
+
+# vuelve al directorio padre utilizando ".."
+os.chdir('..')  # se Utiliza '..' para subir un nivel en la estructura de directorios
+print(f"Regresando al directorio padre: {os.getcwd()}")  # Confirma que se esta en el directorio superior
+print('')
+
+# NAVEGANDO A TRAVÉS DE RUTAS RELATIVAS CON OS
+# Es posible navegar entre directorios utilizando rutas relativas, lo que permite subir y bajar niveles en la estructura de directorios.
+print("Ejemplo 20: Navegando hacia un nuevo directorio usando rutas relativas:")
+
+# Suponiendo que se encuentra en el directorio 'myfolder' y se quiere ir a 'nuevo_directorio' que está en el mismo nivel que 'myfolder'
+# Primero, se cambia a 'myfolder' si existe
+carpeta_nueva = "myfolder"
+ruta_completa = os.path.join(directorio_actual, carpeta_nueva)
+
+if os.path.exists(ruta_completa):
+    os.chdir(ruta_completa)  # Cambia al directorio 'myfolder'
+    print(f"Cambiado al directorio: {os.getcwd()}")  # Verifica que se encuentra en 'myfolder'
+else:
+    print(f"La carpeta {carpeta_nueva} no existe en {directorio_actual}.")
+
+# suponiendo que hay otro directorio en el nivel superior llamado 'nuevo_directorio'
+nuevo_directorio = "newfolder"
+
+# se navega al directorio padre (usando '..') y luego al nuevo directorio
+os.chdir(f'../{nuevo_directorio}')  # Usa '../' para subir un nivel y luego ir a 'newfolder'
+print(f"Navegando a: {os.getcwd()}")  # se confirma que se encuentra en 'newfolder'
 
 
 """# --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -215,7 +281,7 @@ print('')
 # Para eliminar un archivo, se debe ejecutar la función os.remove() del módulo os.
 # Sin embargo, para evitar obtener un error, se debe verificar si el archivo existe antes de intentar eliminarlo:
 if os.path.exists("myfile.txt"):
-    print("Ejemplo 11: Eliminando el archivo myfile.txt")
+    print("Ejemplo 21: Eliminando el archivo myfile.txt")
     os.remove("myfile.txt")
 else:
     print("El archivo no existe.")
