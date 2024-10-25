@@ -249,7 +249,7 @@ else:
     print(f"La carpeta {carpeta_nueva} no existe en {directorio_actual}.")
 
 # vuelve al directorio padre utilizando ".."
-os.chdir('..')  # se Utiliza '..' para subir un nivel en la estructura de directorios
+os.chdir('..')  # se Utiliza '..' para subir un nivel en la estructura de directorios.
 print(f"Regresando al directorio padre: {os.getcwd()}")  # Confirma que se esta en el directorio superior
 print('')
 
