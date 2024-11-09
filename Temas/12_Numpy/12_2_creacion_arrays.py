@@ -51,4 +51,3 @@ arr = np.array(
 )
 print("Ejemplo: Comprobando el número de dimensiones de un arreglo.")
 print(f"El arreglo:\n{arr}\n tiene {arr.ndim} dimensiones.\n")
-
