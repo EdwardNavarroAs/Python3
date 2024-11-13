@@ -56,4 +56,4 @@ print(f"Resultado: {arr_single.shape} \n")
 # - (2, 4) indica 2 filas y 4 columnas.
 # - (1, 1, 1, 1) indica un arreglo de 4 dimensiones con solo 1 elemento en cada dimensión.
 # - (5,) indica un arreglo de una sola dimensión con 5 elementos.
-# - (2, 2, 2) indica un arreglo de 3 dimensiones con 2 matrices, 2 filas y 2 columnas por cada fila.
+# - (2, 2, 2) indica un arreglo de 3 dimensiones con 2 matrices, 2 filas y 2 columnas por cada fila..
