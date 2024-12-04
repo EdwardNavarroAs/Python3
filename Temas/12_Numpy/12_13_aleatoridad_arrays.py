@@ -93,7 +93,7 @@ x = random.normal(size=10)
 print(f"Resultado: {x}")
 print('')
 
-# Ejemplo 11: Generar valores de una distribución binomial
+# Ejemplo 11: Generar valores de una distribución binomial.
 print("Ejemplo 11: Generando valores siguiendo una distribución binomial (n=10, p=0.5):")
 x = random.binomial(n=10, p=0.5, size=10)
 print(f"Resultado: {x}")
