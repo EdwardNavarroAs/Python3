@@ -87,7 +87,7 @@ print(f"Resultado: \n{x}\n")
 # Ejemplo adicional: Distribuciones estadísticas
 print("NumPy random también permite generar valores de distribuciones estadísticas.")
 
-# Ejemplo 10: Generar valores siguiendo una distribución normal
+# Ejemplo 10: Generar valores siguiendo una distribución normal.
 print("Ejemplo 10: Generando valores siguiendo una distribución normal (media=0, desviación estándar=1):")
 x = random.normal(size=10)
 print(f"Resultado: {x}")
