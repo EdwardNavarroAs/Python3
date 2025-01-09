@@ -64,9 +64,9 @@ print('')
 # Nota: Todos los métodos de cadena devuelven nuevos valores. No cambian la cadena original.
 print("Metodos de python sobre cadenas de texto")
 a = " Hello, World!"
-m1 = a.upper()  # convierte una cadena de texto a mayusculas
+m1 = a.upper()  # convierte una cadena de texto a mayusculas.
 m2 = a.lower()  # convierte una cadena de texto en minusculas
-m3 = a.strip()  # elimina espacios en blanco antes o despues de la cadena de texto
+m3 = a.strip()  # elimina espacios en blanco antes o despues de la cadena de texto...
 m4 = a.replace('Hello', 'Good bye') # reemplaza una cadena de texto con otra
 m5 = a.split(",")   # devuelve una lista donde el texto entre el separador especificado se convierte en los elementos de la lista.
 m6 = a.count("l")   # devuelve el numero de veces que un valor especifico se repite en la cadena de texto
