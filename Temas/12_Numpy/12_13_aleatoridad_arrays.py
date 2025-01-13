@@ -81,20 +81,35 @@ print("Ejemplo 9: Generando un arreglo bidimensional de tamaño 2x3 a partir del
 x = random.choice(arr, size=(2, 3))
 print(f"Resultado: \n{x}\n")
 
+# En NumPy es posible generar números aleatorios en función de probabilidades definidas mediante el método choice() del módulo random.
+# El método choice() permite especificar la probabilidad de cada valor.
+# La probabilidad se establece mediante un número entre 0 y 1, donde 0 significa que el valor nunca se producirá y 1 significa que el valor siempre se producirá.
 
+print("Números aleatorios a partir de distribuciones")
+print("En NumPy es posible generar números aleatorios en función de probabilidades definidas mediante el método choice() del módulo random. Este método permite especificar la probabilidad de cada valor individual en el arreglo.")
 
+# Ejemplo 1: Generando un arreglo 1D con probabilidades definidas
+# Generando un arreglo unidimensional de 100 valores, donde cada valor debe ser 3, 5, 7 o 9.
+# Las probabilidades son:
+# - 3: 0.1
+# - 5: 0.3
+# - 7: 0.6
+# - 9: 0.0 (nunca aparecerá)
+print("Ejemplo 1: Generando un arreglo que contiene 100 valores, donde cada valor debe ser 3, 5, 7 o 9, con un cierto nivel de probabilidad.")
 
-# Ejemplo adicional: Distribuciones estadísticas
-print("NumPy random también permite generar valores de distribuciones estadísticas.")
-
-# Ejemplo 10: Generar valores siguiendo una distribución normal.
-print("Ejemplo 10: Generando valores siguiendo una distribución normal (media=0, desviación estándar=1):")
-x = random.normal(size=10)
+x = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(100))
 print(f"Resultado: {x}")
+print(f"Longitud del resultado: {len(x)}")
 print('')
+# Notas:
+#   - En este ejemplo, la suma de todas las probabilidades debe ser 1.
+#   - Aunque el ejemplo se ejecute múltiples veces, el valor 9 nunca aparecerá debido a su probabilidad de 0.
 
-# Ejemplo 11: Generar valores de una distribución binomial.
-print("Ejemplo 11: Generando valores siguiendo una distribución binomial (n=10, p=0.5):")
-x = random.binomial(n=10, p=0.5, size=10)
-print(f"Resultado: {x}")
-print('')
+# Ejemplo 2: Generando un arreglo 2D con probabilidades definidas
+# Generando un arreglo de 2D con 3 filas y 5 columnas (15 valores en total), donde cada valor debe ser 3, 5, 7 o 9.
+# Las probabilidades son las mismas que en el ejemplo anterior.
+print("Ejemplo 2: Generando un arreglo de tamaño 3x5, donde cada valor debe ser 3, 5, 7 o 9, con un cierto nivel de probabilidad.")
+
+x = random.choice([3, 5, 7, 9], p=[0.1, 0.3, 0.6, 0.0], size=(3, 5))
+print(f"Resultado: \n{x}\n")
+
