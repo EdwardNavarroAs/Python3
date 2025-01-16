@@ -19,7 +19,7 @@ my_list1 = ["apple", "banana", "cherry"]
 print(f"Lista en Python: {my_list1}, Tipo de dato {type(my_list1)}")
 print('')
 
-# También se puede definir una lista utilizando el constructor list()
+# También se puede definir una lista utilizando el constructor list().
 print("También se puede definir una lista utilizando el constructor list():")
 thislist = list(("apple", "banana", "cherry")) 
 print(f"Lista en Python: {thislist}, Tipo de dato: {type(thislist)}")
