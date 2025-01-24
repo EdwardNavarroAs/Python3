@@ -181,7 +181,7 @@ print("La distribución Uniforme se utiliza para describir la probabilidad en la
 print("\nEjemplo 1: Generando una muestra de distribución uniforme de tamaño 10")
 
 u1 = np.random.uniform(size=10)
-print(f"Resultado: \n{u1}\n")  # Corrige p1 a u1
+print(f"Resultado: \n{u1}\n") 
 
 sns.kdeplot(u1, label='Uniforme', color='blue')
 plt.title("Distribución de Datos Uniforme")
@@ -190,4 +190,140 @@ plt.ylabel("Frecuencia/Densidad")
 plt.show()
 
 
+"""
+Distribución logística
 
+La distribución logística se utiliza para describir el crecimiento.
+Se utiliza ampliamente en el aprendizaje automático en regresión logística, redes neuronales, etc.
+"""
+
+# Para generar una distribución logistica en NumPy se utiliza el método random.logistics().
+# Tiene tres parámetros:
+#   loc: media, donde se encuentra el pico. El valor predeterminado es 0.
+#   scale: desviación estándar, la uniformidad de la distribución. El valor predeterminado es 1.
+#   size: la forma del arrglo de datos devuelto.
+print("Distribución Logistica")
+print("La distribución logistica se utiliza para describir el posible crecimiento de un fenomeno fisico.")
+
+# Ejemplo 1: # Generar 1000 muestras de una distribución logistica con media 1 y desviacion estandar 2:
+print("\nEjemplo 1: Generando 1000 muestras de una distribución logistica con media 1 y desviacion standar 2")
+l1 = np.random.logistic(loc=1, scale=2, size=1000)
+
+print(f"Resultado: \n{l1}\n") 
+
+sns.kdeplot(l1, label='logistica', color='blue')
+plt.title("Distribución de Datos logistica")
+plt.xlabel("Número de ocurrencias")
+plt.ylabel("Frecuencia/Densidad")
+plt.show()
+
+"""
+Distribución exponencial
+
+La distribución exponencial se utiliza para describir el tiempo hasta un próximo evento conocido, por ejemplo, fracaso/éxito, etc.
+"""
+
+# Para generar una distribución exponencial en NumPy se utiliza el método random.exponential().
+
+# Tiene dos parámetros:
+#   escale: inversa de la tasa; el valor predeterminado es 1,0.
+#   size: la forma del arreglo de datos devuelto.
+print("Distribución Exponencial")
+print("La distribución exponencial se utiliza para describir el tiempo hasta un próximo evento en un proceso de Poisson.")
+
+# Ejemplo 1: # Generar 1000 muestras de una distribución exponencial:
+print("\nEjemplo 1: Generando 1000 muestras de una distribución exponencial")
+e1 = np.random.exponential(scale=2, size=1000)
+
+print(f"Resultado: \n{e1}\n")  
+
+sns.kdeplot(e1, label='exponencial', color='blue')
+plt.title("Distribución de Datos exponencial")
+plt.xlabel("Número de ocurrencias")
+plt.ylabel("Frecuencia/Densidad")
+plt.show()
+
+"""
+Distribución de Rayleigh
+
+La distribución de Rayleigh se utiliza en el procesamiento de señales.
+"""
+
+# Para generar una distribución rayleigh en NumPy se utiliza el método random.rayleigh().
+
+# Tiene dos parámetros:
+#   escale: inversa de la tasa ; el valor predeterminado es 1,0.
+#   size: la forma del arreglo de datos devuelto.
+
+print("Distribución rayleigh")
+print("La distribución de Rayleigh se utiliza en el procesamiento de señales.")
+
+# Ejemplo 1: # Generar 1000 muestras de una distribución rayleigh:
+print("\nEjemplo 1: Generando 1000 muestras de una distribución rayleigh")
+r1 = np.random.rayleigh(size=1000)
+
+print(f"Resultado: \n{r1}\n")  # Corrige p1 a u1
+
+sns.kdeplot(r1, label='rayleigh', color='blue')
+plt.title("Distribución de Datos rayleigh")
+plt.xlabel("Número de ocurrencias")
+plt.ylabel("Frecuencia/Densidad")
+plt.show()
+
+# otras distribuciones
+"""
+Distribución Chi-cuadrado
+
+Se utiliza en estadísticas para evaluar la relación entre dos variables categóricas o en pruebas de hipótesis.
+Ejemplo: Comparar la varianza de una muestra con una varianza teórica.
+"""
+# Distribución Chi-cuadrado
+print("Distribución Chi-cuadrado")
+print("La distribución Chi-cuadrado se utiliza en pruebas estadísticas como la prueba de bondad de ajuste o la independencia.")
+
+chi_data = np.random.chisquare(df=2, size=1000)  # df: grados de libertad
+
+sns.kdeplot(chi_data, label='Chi-cuadrado', color='purple')
+plt.title("Distribución Chi-cuadrado")
+plt.xlabel("Valores")
+plt.ylabel("Frecuencia/Densidad")
+plt.legend()
+plt.show()
+
+"""
+Distribucion Gamma
+
+Modela la duración hasta que ocurran k eventos en un proceso de Poisson.
+Ejemplo: Modelar la cantidad de lluvia acumulada en un día.
+"""
+# Distribución Gamma
+print("Distribución Gamma")
+print("La distribución Gamma se utiliza para modelar la duración hasta que ocurran k eventos en un proceso de Poisson.")
+
+gamma_data = np.random.gamma(shape=2, scale=2, size=1000)  # shape=k, scale=theta
+
+sns.kdeplot(gamma_data, label='Gamma', color='orange')
+plt.title("Distribución Gamma")
+plt.xlabel("Valores")
+plt.ylabel("Frecuencia/Densidad")
+plt.legend()
+plt.show()
+
+"""
+Distribución beta
+
+Se utiliza para modelar probabilidades o proporciones.
+Ejemplo: Tasa de éxito en ensayos clínicos.
+"""
+# Distribución Beta
+print("Distribución Beta")
+print("La distribución Beta se utiliza para modelar probabilidades o proporciones.")
+
+beta_data = np.random.beta(a=2, b=5, size=1000)  # a y b son parámetros de forma
+
+sns.kdeplot(beta_data, label='Beta', color='cyan')
+plt.title("Distribución Beta")
+plt.xlabel("Valores")
+plt.ylabel("Frecuencia/Densidad")
+plt.legend()
+plt.show()
