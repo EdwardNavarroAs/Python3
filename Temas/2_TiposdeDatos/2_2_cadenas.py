@@ -1,7 +1,7 @@
 # Tema 2: Tipos de datos en python
 # 2.2 cadenas de texto
 
-# Las cadenas en Python se pueden escribir entre comillas simples o dobles
+# Las cadenas en Python se pueden escribir entre comillas simples o dobles.
 print("Las cadenas se pueden escribir entre comillas simples o dobles: ")
 str1 = "hola"
 str2 = 'python'
